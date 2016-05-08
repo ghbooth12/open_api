@@ -1,5 +1,5 @@
 class ListSerializer < ActiveModel::Serializer
-  attributes :id, :creator, :title, :created_at
+  attributes :id, :creator, :title, :private, :created_at
 
   def creator
     object.user.username

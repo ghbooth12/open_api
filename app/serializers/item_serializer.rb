@@ -1,7 +1,7 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :belong_to, :name, :created_at
+  attributes :id, :list_title, :description, :created_at
 
-  def belong_to
+  def list_title
     object.list.title
   end
 

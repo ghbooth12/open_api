@@ -1,5 +1,5 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :list_title, :description, :created_at
+  attributes :id, :list_title, :description, :completed, :created_at
 
   def list_title
     object.list.title

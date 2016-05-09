@@ -3,5 +3,14 @@ class List < ActiveRecord::Base
   has_many :items, dependent: :destroy
 
   validates :title, length: { in: 1..100 }, presence: true
-  validates :private, inclusion: { in: [true, false], message: "The private value should be 'true' or 'false'." }, allow_blank: false
+  validate :public_list?, on: :update
+  validates :private, inclusion: { in: [true, false], message: "value should be 'true' or 'false'." }, allow_blank: false
+
+  private
+
+  def public_list?
+    unless self.private || self.private_changed?
+      errors.add(:list, "can't be updated for the public list.")
+    end
+  end
 end

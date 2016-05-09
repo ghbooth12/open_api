@@ -5,10 +5,8 @@ Rails.application.routes.draw do
     end
 
     resources :lists, only: [] do
-      resources :items, only: [:create]
+      resources :items, only: [:create, :destroy]
     end
-
-    resources :items, only: [:destroy]
   end
 
   root 'welcome#index'

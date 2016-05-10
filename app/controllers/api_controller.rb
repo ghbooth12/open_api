@@ -4,7 +4,7 @@ class ApiController < ApplicationController
   private
   def authenticated?
     authenticate_or_request_with_http_basic do |email, password|
-      User.where(email: email, password: password).present?
+      (@current_user = User.where(email: email, password: password).first) ? true : false
     end
   end
 end

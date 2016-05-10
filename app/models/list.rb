@@ -6,6 +6,8 @@ class List < ActiveRecord::Base
   validate :public_list?, on: :update
   validates :private, inclusion: { in: [true, false], message: "value should be 'true' or 'false'." }, allow_blank: false
 
+  scope :visible, -> (current_user, user) { current_user == user ? all : where(private: false) }
+
   private
 
   def public_list?

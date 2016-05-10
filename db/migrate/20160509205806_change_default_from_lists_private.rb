@@ -1,4 +1,4 @@
-class RemoveDefaultFromListsPrivate < ActiveRecord::Migration
+class ChangeDefaultFromListsPrivate < ActiveRecord::Migration
   def change
     reversible do |dir|
       change_table :lists do |t|

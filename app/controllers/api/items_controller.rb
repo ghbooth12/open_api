@@ -10,6 +10,7 @@ class Api::ItemsController < ApiController
 
   def create
     item = @list.items.build(item_params)
+    item.user_id = @current_user.id
 
     if item.save
       render json: item

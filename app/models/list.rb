@@ -10,6 +10,7 @@ class List < ActiveRecord::Base
 
   private
 
+  # Public list can't be editted. Change it to private first then edit/update.
   def public_list?
     unless self.private || self.private_changed?
       errors.add(:list, "can't be updated for the public list.")

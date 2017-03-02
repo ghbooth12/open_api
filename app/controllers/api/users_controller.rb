@@ -23,7 +23,9 @@ class Api::UsersController < ApiController
     begin
       user = User.find(params[:id])
       user.destroy
-      render json: {}, status: :no_content   # 204
+      
+      # 204 No Content to indicate (the server successfully processed the request)
+      render json: {}, status: :no_content
     rescue ActiveRecord::RecordNotFound
       render json: {}, status: :not_found    # 404
     end

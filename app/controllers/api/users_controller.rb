@@ -2,6 +2,7 @@ class Api::UsersController < ApiController
   before_action :authenticated? # check if user is a member or a guest.
   before_action :authorized_user?, only: [:destroy, :update] # only user him/herself can update, destroy.
 
+  # This returns a UserSerializer-generated JSON representation of all users.
   def index
     users = User.all
     render json: users, each_serializer: UserSerializer

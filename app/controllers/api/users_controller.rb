@@ -11,9 +11,11 @@ class Api::UsersController < ApiController
   def create
     user = User.new(user_params)
     if user.save
+      # Rails searches for UserSerializer and use it to serialize "user".
       render json: user
     else
-      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity    # 422
+      # 422 Unprocessable Entity (the data sent was un-processable)
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

@@ -1,6 +1,6 @@
 class Api::UsersController < ApiController
-  before_action :authenticated?
-  before_action :authorized_user?, only: [:destroy, :update]
+  before_action :authenticated? # check if user is a member or a guest.
+  before_action :authorized_user?, only: [:destroy, :update] # only user him/herself can update, destroy.
 
   def index
     users = User.all
@@ -42,6 +42,7 @@ class Api::UsersController < ApiController
   end
 
   # only: [:destroy, :update]
+  # @current_user = User.where(email: email, password: password).first
   def authorized_user?
     user = User.find(params[:id])
     unless @current_user == user

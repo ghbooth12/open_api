@@ -1,5 +1,7 @@
 ## Open Todo API: External API With Authentication
 
+[View site](https://open-api-ghbooth12.herokuapp.com/)
+
 * API for a to-do list application, so that users can authenticate and manage their to-do list externally.
 * Users can change the same data from the command line.
 * It supports other platforms and programmers can build on the Open API in new and exciting ways.
@@ -18,19 +20,22 @@ Manage to-do list using cURL.
 
 
 #### Create
-1. Sign up with your username, email and password.
+* Sign up with your username, email and password.
 ```bash
 $ curl -u test@test.io:testtest -d "user[username]=John Doe" -d "user[email]=your_email@address.com" -d "user[password]=yourPassword" https://open-api-ghbooth12.herokuapp.com/api/users
 ```
-2. Create a to-do list.
+
+* Create a to-do list.
 ```bash
 $ curl -u your_email@address.com:yourPassword -d "list[title]=Things to do today" https://open-api-ghbooth12.herokuapp.com/api/users/your-id-number/lists
 ```
+
  _Default to private to-do list. To make it public, add "list[private]=false"_
 ```bash
 $ curl -u your_email@address.com:yourPassword -d "list[title]=Things to do today" -d "list[private]=false" https://open-api-ghbooth12.herokuapp.com/api/users/your-id-number/lists
 ```
-3. Create a to-do item
+
+* Create a to-do item
 ```bash
 $ curl -u your_email@address.com:yourPassword -d "item[description]=Grocery shopping" https://open-api-ghbooth12.herokuapp.com/api/lists/list-id-number/items
 ```

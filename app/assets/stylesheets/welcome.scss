@@ -1,3 +1,84 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.info {
+  color: #268cde;
+}
+.warning {
+  color: #ff5722;
+}
+.danger {
+  color: #9960ff;
+}
+
+hr {
+  border-color: 1px solid #aaa;
+  margin: 20px 0;
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.btn {
+  display: inline-block;
+  background-color: #268cde;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    background-color: darken(#268cde, 30%);
+  }
+}
+
+.heading {
+  margin-bottom: 0;
+}
+
+.text-faded {
+  margin-top: 0;
+  color: #777;
+  font-size: 0.9em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-small {
+  font-size: .8em;
+}
+
+section {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 50px auto;
+  color: #222;
+
+  h1 {
+    font-size: 2em;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  li {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+
+  pre {
+    white-space: pre-wrap;
+    font-size: 1.1em;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    padding: 15px 5px 5px 15px;
+  }
+}

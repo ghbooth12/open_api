@@ -17,21 +17,15 @@ hr {
   margin: 20px 0;
 }
 
-a {
-  text-decoration: none;
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 .btn {
   display: inline-block;
-  background-color: #268cde;
+  background-color: #ff9800;
   color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
-  -webkit-transition: all .3s ease-in-out;
-  transition: all .3s ease-in-out;
+  text-decoration: none;
+  -webkit-transition: background-color .3s ease-in-out;
+  transition: background-color .3s ease-in-out;
 
   &:hover {
     background-color: darken(#268cde, 30%);
@@ -54,6 +48,10 @@ a {
 
 .text-small {
   font-size: .8em;
+}
+
+.space {
+  margin-bottom: 2em;
 }
 
 section {
@@ -80,5 +78,18 @@ section {
     border: 1px solid #aaa;
     border-radius: 7px;
     padding: 15px 5px 5px 15px;
+  }
+  .content-heading {
+    a {
+      text-decoration: none;
+      color: #ff9800;
+      &:hover {
+        text-decoration: none;
+        border-bottom: 3px solid #ddd;
+      }
+      &:visited {
+        color: #ff9800;
+      }
+    }
   }
 }

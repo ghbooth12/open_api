@@ -10,125 +10,144 @@
   <hr>
 
   <div class="steps">
-    <div class="text-center">
+    <div class="text-center space content-heading">
       <h2 class="heading">How it works</h2>
       <p class="text-faded">Manage to-do list using cURL.</p>
-      <ul class="text-small">
+      <ul class="text-small space">
+        <li>&check; Type example code in command line.</li>
+        <li>&check; cURL is a popular command-line tool for interacting with HTTP.</li>
         <li>&check; User's password is NOT returned for security purpose.</li>
         <li>&check; User can ONLY manipulate his/her own to-dos, not other's.</li>
+        <li>&check; All responses are in JSON form. See <a href="#json">example.</a></li>
       </ul>
+      <a href="#create">How to create</a> | <a href="#view">View to-do</a> | <a href="#edit">Edit to-do </a> | <a href="#delete">Delete to-do</a> | <a href="#json">Returned Data</a>
     </div>
 
-    <h3><i>Create</i></h3>
-    <p>1. Sign up First.</p>
-    <pre>
+    <div class="content">
+      <h3 id="create"><i>Create</i></h3>
+      <p>1. Sign up with your username, email and password.</p>
+      <pre>
 $ <span class="warning">curl</span> -u test@test.io:testtest -d <span class="info">"user[username]=John Doe"</span> -d <span class="info">"user[email]=your_email@address.com"</span> -d <span class="info">"user[password]=yourPassword"</span> https://open-api-ghbooth12.herokuapp.com/api/users
-    </pre>
+      </pre>
 
-    <p>2. Create a to-do list.</p>
-    <pre>
+      <p>2. Create a to-do list.</p>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"list[title]=Things to do today"</span> https://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>/lists
-    </pre>
+      </pre>
 
-    <small class="text-faded">Default to private to-do list. To make it public, add "list[private]=false"</small>
-    <pre>
+      <small class="text-faded">Default to private to-do list. To make it public, add "list[private]=false"</small>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"list[title]=Things to do today"</span> -d <span class="info">"list[private]=false"</span> https://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>/lists
-    </pre>
+      </pre>
 
-    <p>3. Create a to-do item</p>
-    <pre>
+      <p>3. Create a to-do item</p>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"item[description]=Grocery shopping"</span> https://open-api-ghbooth12.herokuapp.com/api/lists/<b>list-id-number</b>/items
-    </pre>
+      </pre>
+    </div>
 
-    <h3><i>View</i></h3>
-    <p>&rtrif; View my lists</p>
-    <pre>
+    <div class="content">
+      <h3 id="view"><i>View</i></h3>
+      <p>&rtrif; View my lists</p>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> https://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>/lists
-    </pre>
+      </pre>
 
-    <p>&rtrif; View items of selected list</p>
-    <pre>
+      <p>&rtrif; View items of selected list</p>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> https://open-api-ghbooth12.herokuapp.com/api/lists/<b>list-id-number</b>/items
-    </pre>
+      </pre>
+    </div>
 
-    <h3><i>Edit</i></h3>
-    <p>&rtrif; Edit my user account</p>
-    <pre>
+    <div class="content">
+      <h3 id="edit"><i>Edit</i></h3>
+      <p>&rtrif; Edit my user account</p>
+      <pre>
 $ <span class="warning">curl -X PUT</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"user[username]=Mark Doe"</span> https://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>
-    </pre>
+      </pre>
 
-    <p>&rtrif; Edit my list title</p>
-    <pre>
+      <p>&rtrif; Edit my list title</p>
+      <pre>
 $ <span class="warning">curl -X PUT</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"list[title]=Todo tomorrow"</span> https://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>/lists/<b>list-id-number</b>
-    </pre>
+      </pre>
 
-    <p>&rtrif; Edit my item description</p>
-    <pre>
+      <p>&rtrif; Edit my item description</p>
+      <pre>
 $ <span class="warning">curl -X PUT</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"item[description]=Walk dog"</span> https://open-api-ghbooth12.herokuapp.com/api/lists/<b>list-id-number</b>/items/<b>item-id-number</b>
-    </pre>
+      </pre>
 
-    <h3><i>Delete</i></h3>
-    <p>&rtrif; Delete my user account</p>
-    <small class="text-faded">Once you delete your account, all your list/item will be deleted too.</small>
-    <pre>
+      <small class="text-faded">Mark to-do item complete</small>
+      <pre>
+$ <span class="warning">curl -X PUT</span> -u <span class="danger">your_email@address.com:yourPassword</span> -d <span class="info">"item[completed]=true"</span> https://open-api-ghbooth12.herokuapp.com/api/lists/<b>list-id-number</b>/items/<b>item-id-number</b>
+      </pre>
+    </div>
+
+    <div class="content">
+      <h3 id="delete"><i>Delete</i></h3>
+      <p>&rtrif; Delete my user account</p>
+      <small class="text-faded">Once you delete your account, all your list/item will be deleted too.</small>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> <span class="warning">-X DELETE</span> htps://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>
-    </pre>
+      </pre>
 
-    <p>&rtrif; Delete my list</p>
-    <pre>
+      <p>&rtrif; Delete my list</p>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> <span class="warning">-X DELETE</span> https://open-api-ghbooth12.herokuapp.com/api/users/<b>your-id-number</b>/lists/<b>list-id-number</b>
-    </pre>
+      </pre>
 
-    <p>&rtrif; Delete my item</p>
-    <pre>
+      <p>&rtrif; Delete my item</p>
+      <pre>
 $ <span class="warning">curl</span> -u <span class="danger">your_email@address.com:yourPassword</span> <span class="warning">-X DELETE</span> https://open-api-ghbooth12.herokuapp.com/api/lists/<b>list-id-number</b>/items/<b>item-id-number</b>
-    </pre>
+      </pre>
+    </div>
 
-    <h3><i>Returned Data in JSON</i></h3>
-    <p>&rtrif; Example data returned</p>
-    <pre>
+    <div class="content">
+      <h3 id="json"><i>Returned Data in JSON</i></h3>
+      <p>&rtrif; Example data returned</p>
+      <pre>
 {
   "lists": [
+  {
+    "id": 1,
+    "creator": "John Smith",
+    "title": "ToDo today",
+    "items": [
     {
-      "id": 1,
-      "creator": "John Smith",
-      "title": "ToDo today",
-      "items": [
-        {
-          "id": 8,
-          "description": "Read book",
-          "completed": false
-        },
-        {
-          "id": 9,
-          "description": "Cook",
-          "completed": false
-        }
-      ],
-      "status": "Private List",
-      "created_at": "May 10, 2016"
+      "id": 8,
+      "description": "Read book",
+      "completed": false
+    },
+    {
+      "id": 9,
+      "description": "Cook",
+      "completed": false
+    }
+    ],
+    "status": "Private List",
+    "created_at": "May 10, 2016"
+  },
+  {
+    "id": 3,
+    "creator": "John Smith",
+    "title": "Things to do tomorrow",
+    "items": [
+    {
+      "id": 2,
+      "description": "Relax",
+      "completed": false
     },
     {
       "id": 3,
-      "creator": "John Smith",
-      "title": "Things to do tomorrow",
-      "items": [
-        {
-          "id": 2,
-          "description": "Relax",
-          "completed": false
-        },
-        {
-          "id": 3,
-          "description": "study",
-          "completed": true
-        }
-      ],
-      "status": "Public List",
-      "created_at": "May 10, 2016"
+      "description": "study",
+      "completed": true
     }
+    ],
+    "status": "Public List",
+    "created_at": "May 10, 2016"
+  }
   ]
 }
-    </pre>
+      </pre>
+    </div>
   </div>
 </section>
